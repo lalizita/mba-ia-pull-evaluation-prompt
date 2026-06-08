@@ -334,3 +334,42 @@ python src/evaluate.py
 - **Não altere os datasets de avaliação** - apenas os prompts em `prompts/bug_to_user_story_v2.yml`
 - **Itere, itere, itere** - é normal precisar de 3-5 iterações para atingir 0.9 em todas as métricas
 - **Documente seu processo** - a jornada de otimização é tão importante quanto o resultado final
+
+
+## Técnicas Aplicadas (Fase 2)
+
+- Quais técnicas avançadas você escolheu para refatorar os prompts
+- Justificativa de por que escolheu cada técnica
+- Exemplos práticos de como aplicou cada técnica
+
+Desenvolvi o prompt com o auxílio de IA para que me ajudasse a ter ideias de exemplos a descrever. Ao executar o script de evaluation vi que precisava dar exemplos mais específicos para que cobrisse outros cenários e atendesse a mais critérios.
+Procurei por aplicar as seguintes técnicas de prompt:
+
+### Few-Shot 
+Por ter que limitar alguns raciocínios para evitar a alucinação da IA e reduzindo as variações de saída conforme ia treinando opetei por explorar essa estratégia na seção de `## EXEMPLOS` e níveis de complexidade.
+
+
+```
+BUG REPORT: "Botão de curtir não funciona nas postagens do feed..."
+
+Como um usuário navegando no feed, eu quero curtir postagens que me interessam, para que eu possa interagir com o conteúdo e salvar posts relevantes.
+
+ Critérios de Aceitação:
+    - Dado que estou visualizando uma postagem no feed
+    - Quando clico no botão "Curtir"
+    - Então a postagem deve ser marcada como curtida
+    - E devo ver o ícone de coração preenchido
+    - E o contador de curtidas deve ser atualizado
+```
+
+mais outros exemplos de nível de complexidade médio e complexo, todas utilizando Few Shot.
+
+### Role Prompting / Persona
+Essa tarefa é dada a um profissional de tecnologia, com a minha experiência são analistas, alguém de produto ou liderança que descreve user stories para que o time desenvolva. Com disso também decidi aplicar essa técnica para que o prompt herde as habillidades do profissional e evite respostas e raciocínio genéricos. Fiz isso logo no início do prompt dando clareza para a LLM de qual o papel dela:
+
+```
+Você é um Product Manager Senior especializado em metodologias ágeis e User Stories com 10 anos de experiência.
+```
+
+
+CoT Pense passo a passo e responda APENAS com a User Story.
