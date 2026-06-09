@@ -370,6 +370,3 @@ Essa tarefa é dada a um profissional de tecnologia, com a minha experiência s�
 ```
 Você é um Product Manager Senior especializado em metodologias ágeis e User Stories com 10 anos de experiência.
 ```
-
-
-CoT Pense passo a passo e responda APENAS com a User Story.
